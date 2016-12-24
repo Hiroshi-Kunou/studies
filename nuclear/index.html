@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style>
+#myGraph {
+	height: 5000px;
+	width: 100%;
+}
+#myGraph rect{
+stroke:rgb(160,0,0);
+stroke-width:0px;
+fill:rgb(255,0,0);
+}
+.axis text{
+	font-family: sans-serif;
+	font-size: 8px;
+}
+
+.axis path, .axis line{
+fill:none;
+stroke-width:0.5px;
+stroke: black;
+}
+
+.barName{
+	font-family: sans-serif;
+	font-size: 8px;
+}
+</style>
+<script src="d3.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Hiroshi Kuno</title>
+</head>
+<body>
+<svg id="myGraph"></svg>
+<script src="nuclearplants.js"></script>
+</body>
+</html>

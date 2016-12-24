@@ -1,0 +1,78 @@
+<html>
+<head>
+<title>食堂ビンゴa</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<style type="text/css">
+  div {
+    font-size: 12px;
+    margin: 10px;
+    padding: 10px;
+  }
+  p{
+    font-size: 12px;
+    width: 200px;
+    word-wrap: break-word;
+    text-align: center;
+  }
+  #numBox{
+    font-size: 200px;
+    width:80%;
+  }
+  .controller{
+    width: 280px;
+    margin: 0 auto;
+  }
+  .button{
+    background-color: #ccc;
+    height: 100px;
+    width: 100px;
+    float: left;
+    border-radius: 5px;
+  }
+  .button:hover{
+    background-color: #ddd;
+  }
+</style>
+
+</head>
+<body>
+
+
+<p id="numBox">Numbers</p>
+<p id="ballBox">Ballbox</p>
+
+<script type="text/javascript">
+  var array=[]
+  var numBall=Math.floor(Math.random()*80)+1;
+  var numBox=document.getElementById("numBox")
+  var ballBox=document.getElementById("ballBox")
+
+  function bingo(){
+    if(array.length<=9){
+      numBall=Math.floor(Math.random()*80)+1;
+      while(array.indexOf(numBall)!=-1){
+        numBall=Math.floor(Math.random()*80)+1;
+      }
+      array.push(numBall);
+      numBox.innerHTML=numBall
+      ballBox.innerHTML=array
+    }
+  }
+
+  function clearLog(){
+    array.length=0
+    numBall=null
+      numBox.innerHTML="Numbers"
+      ballBox.innerHTML="Ballbox"
+  }
+</script>
+
+<div class="controller">
+  <div class="button" onclick="bingo()">bingo</div>
+  <div class="button" onclick="clearLog()">clear</div>
+</div>
+
+
+</body>
+</html>
