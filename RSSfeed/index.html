@@ -1,71 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RSS feed</title>
+  </head>
+  <body>
 
-<script type="text/JavaScript" src="js/jquery.js"></script>
-<script type="text/javascript">
-$(function() {
-    var setURL = '../feed'; //feedのURL
-    var setNUM = 5; //表示件数
-    var setID = 'feed'; //表示させる箇所のID
-    xmlLoad(setURL,setID,setNUM);
-});
-function xmlLoad(_xmlUrl,_id,_num){
-    DD = new Date();HH = DD.getHours();MM = DD.getMinutes();SS = DD.getSeconds();
-    var xmlUrl = _xmlUrl+"?"+HH+MM+SS;  //キャッシュ対策のクエリを付与
-    var main = this;
-    $.ajax({
-    url: xmlUrl,
-    type: 'GET',
-    dataType: 'xml',
-    timeout: 10000,
-    error: function(){
-        _msg = 'error';
-        xmlOpen(_msg,_id,_num);
-    },
-    success: function(_xml){
-        main.xml = _xml;
-        _msg = 'load';
-        xmlOpen(_msg,_id,_num);
-    }
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+
+    <script>
+    $(function() {
+        var setURL = 'https://news.yahoo.co.jp/pickup/rss.xml'; //feedのURL
+        var setNUM = 5; //表示件数
+        var setID = 'feed'; //表示させる箇所のID
+        xmlLoad(setURL,setID,setNUM);
     });
-    return;
-}
-var xmlOpen = function(_msg,_id,_num){
-    var main = this;
-    var html = '';
-    var ID = _id;
-    var Num = _num;
-    if(_msg == 'load'){
-        xml = main.xml;
-        var channelData = $(xml).find('channel')[0];
-        $(channelData).find('item').each(function(i){
-            if(i < Num){
-            postTitle = $(this).find('title').text();//記事タイトル取得
-            postLink = $(this).find('link').text();//記事リンク取得
+    function xmlLoad(_xmlUrl,_id,_num){
+        DD = new Date();HH = DD.getHours();MM = DD.getMinutes();SS = DD.getSeconds();
+        // var xmlUrl = _xmlUrl+"?"+HH+MM+SS;  //キャッシュ対策のクエリを付与
+        var xmlUrl = _xmlUrl;  //キャッシュ対策のクエリを付与
 
-            //日付を取得し年月日を整形
-            publishedDate = $(this).find('pubDate').text();
-            var pubDD = new Date(publishedDate);
-            yy = pubDD.getYear();if (yy < 2000) { yy += 1900; }
-            mm = pubDD.getMonth() + 1;dd = pubDD.getDate();
-            var postDate = yy +'年'+ mm +'月'+ dd +'日';
+        var main = this;
+        $.ajax({
+        url: xmlUrl,
+        type: 'GET',
+        dataType: 'xml',
+        timeout: 10000,
+        error: function(){
+            _msg = 'error';
+            xmlOpen(_msg,_id,_num);
+        },
+        success: function(_xml){
+            main.xml = _xml;
+            _msg = 'load';
+            xmlOpen(_msg,_id,_num);
+        }
+        });
+        return;
+    }
+    var xmlOpen = function(_msg,_id,_num){
+        var main = this;
+        var html = '';
+        var ID = _id;
+        var Num = _num;
+        if(_msg == 'load'){
+            xml = main.xml;
+            var channelData = $(xml).find('channel')[0];
+            $(channelData).find('item').each(function(i){
+                if(i < Num){
+                postTitle = $(this).find('title').text();//記事タイトル取得
+                postLink = $(this).find('link').text();//記事リンク取得
 
-            //カテゴリが１記事に複数あるのである分だけ取得
-            var postCategory = '';
-            $(this).find('category').each(function(i){
-                category = $(this).text();
-                if(i <= 0){
-                    postCategory += category;
-                }else{
-                    postCategory += ',' + category;
+                //日付を取得し年月日を整形
+                publishedDate = $(this).find('pubDate').text();
+                var pubDD = new Date(publishedDate);
+                yy = pubDD.getYear();if (yy < 2000) { yy += 1900; }
+                mm = pubDD.getMonth() + 1;dd = pubDD.getDate();
+                var postDate = yy +'年'+ mm +'月'+ dd +'日';
+
+                //カテゴリが１記事に複数あるのである分だけ取得
+                // var postCategory = '';
+                // $(this).find('category').each(function(i){
+                //     category = $(this).text();
+                //     if(i <= 0){
+                //         postCategory += category;
+                //     }else{
+                //         postCategory += ',' + category;
+                //     }
+                // });
+
+                //表示する部分を整形
+                html += '<li><a href="' + postLink + '">' + postTitle +'</a> - ' + postCategory + '（' + postDate + '）</li>';
                 }
             });
-
-            //表示する部分を整形
-            html += '<li><a href="' + postLink + '">' + postTitle +'</a> - ' + postCategory + '（' + postDate + '）</li>';
-            }
-        });
-    }else{
-        html += '<li>通信エラー</li>';
+        }else{
+            html += '<li>通信エラー</li>';
+        }
+        $("#"+ID).html(html);
     }
-    $("#"+ID).html(html);
-}
-</script>
+    </script>
+
+  </body>
+</html>
