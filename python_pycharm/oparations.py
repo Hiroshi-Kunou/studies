@@ -19,3 +19,11 @@ print f
 # 割った余り
 g=a%b
 print g
+
+print "///"
+
+h=a+1
+print h
+
+a+=1
+print a
