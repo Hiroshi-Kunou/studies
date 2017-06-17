@@ -1,0 +1,40 @@
+process.stdin.resume();
+process.stdin.setEncoding('utf8');
+process.stdin.on('data', function (chunk) {
+    var line = chunk.toString();
+    var lines = line.split("\n");
+    // console.log(line);
+
+//  商品の種類
+    var variation = parseInt(lines[0]);
+    // console.log("Product variation is " + variation);
+
+//  買い物客の人数
+    var people = parseInt(lines[variation+1]);
+    // console.log("People is " + people);
+
+
+// peopleの数だけ割引の計算を繰り返す
+for(i=0;i<people;i++){
+    var person = lines[variation+2+i].split(" ");
+    var personBuy = parseInt(person[0]);
+    var personBuyCount = parseInt(person[1]);
+// console.log("person" + i + "buy" + personBuy);
+// console.log("person" + i + "buy" + personBuyCount);
+    var personBuyProduct = lines[personBuy].split(" ");
+    var productPrice = parseInt(personBuyProduct[0]);
+    var productDiscountCount = parseInt(personBuyProduct[1]);
+    var productDiscountValue = parseInt(personBuyProduct[2]);
+// console.log("productPrice is " + productPrice);
+// console.log("productDiscountCount is " + productDiscountCount);
+// console.log("productDiscountValue is " + productDiscountValue);
+
+    var answer=productPrice*personBuyCount;
+    while(personBuyCount>=productDiscountCount){
+        answer=answer-productDiscountValue;
+        personBuyCount=personBuyCount-productDiscountCount;
+    }
+  console.log(answer);
+
+}
+});
