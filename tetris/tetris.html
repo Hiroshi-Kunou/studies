@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>tetris</title>
+</head>
+<body>
+
+<style>
+table {
+border-collapse: collapse;
+}
+table td {
+width: 20px;
+height: 20px;
+border: solid 1px #333;
+}
+</style>
+
+<script>
+window.onload = function(){
+
+var wid = 12;
+var hei = 21;
+var speed = 20;
+var fills = {}
+var html =['<table>'];
+
+for(y=0;y<hei;y++){
+  html.push('<tr>');
+  for(x=0;x<wid;x++){
+    if(x==0||x==wid-1||y==hei-1){
+      html.push('<td style="background-color:silver"></td>');
+      fills[x+y*wid]='silver';
+    }else{
+      html.push('<td></td>');
+    };
+  }
+  html.push('</tr>');
+}
+
+html.push('</table>');
+document.getElementById('view').innerHTML=html.join('');
+
+  var cells = document.getElementsByTagName('td');
+  var top = 2;
+  var top0 = top;
+  var left = Math.floor(wid/2);
+  var left0 = left;
+  var w = wid;
+  var angles = [[-1,1,2],[-w,w,w+w],[-2,-1,1],[-w-w,-w,w]]
+  var angle =0;
+  var parts0 = [];
+  var keys = {};
+  document.onkeydown = function(e){
+    switch((e||event).keyCode){
+      case 37: keys.left = true; break
+      case 39: keys.right = true; break
+      case 32: keys.rotate = true; break
+    }
+  }
+  var tick = 0;
+  var move = function(){
+    tick++;
+    left0 = left;
+    if(keys.left && left > 0 ) left--;
+    if(keys.right && left + 4 < wid) left++;
+    if(keys.rotate) angle++;
+    keys = {}
+  for(i=-1;i<parts0.length;i++){
+    var offset=parts0[i]||0;
+    cells[top0*wid+left0+offset].style.backgroundColor='';
+  }
+  parts0 = angles[angle % angles.length]
+  for(i=-1;i<parts0.length;i++){
+    var offset=parts0[i]||0;
+    cells[top*wid+left+offset].style.backgroundColor='red';
+  }
+    top0 = top;
+    if(tick%speed==0)top++;
+    var info = tick+'('+left+','+top+')';
+    document.getElementById('info').innerHTML=info;
+    if(top<hei) setTimeout(move,1000/speed);
+  }
+  move();
+}
+
+
+</script>
+<div id="info"></div>
+<div id="view"></div>
+</body>
+</html>
