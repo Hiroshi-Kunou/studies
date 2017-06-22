@@ -1,0 +1,89 @@
+body {
+  font-size: 10px;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #333;
+  margin: 0;
+  padding: 2.4em;
+  color: #fff;
+}
+
+h1 {
+  font-size: 1.2em;
+  font-weight: 600;
+  line-height: 1.8;
+  margin: 0 0 1.2em 0;
+}
+
+p {
+  line-height: 1.8;
+  color: #fff;
+}
+
+.pt {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.form__name input {
+  margin: 0 0 8px 0;
+  border: none;
+  background-color: #ccc;
+}
+
+.form__name input:focus {
+  background-color: #fff;
+}
+
+.form__name label {
+  width: 70px;
+  display: inline-block;
+}
+.db__list {
+  list-style: none;
+  line-height: 0.9;
+}
+.db__list:before {
+  position: absolute;
+  margin-left: -10px;
+  margin-top: 2.5px;
+  content: '';
+  width: 4px;
+  height: 4px;
+  display: block;
+  border-radius: 50%;
+  background-color: #999;
+}
+.success {
+  color: #5aff28;
+  position: relative;
+  margin-left: 12px;
+}
+
+.success:before {
+  position: absolute;
+  margin-left: -11px;
+  margin-top: 5px;
+  content: '';
+  width: 8px;
+  height: 8px;
+  display: block;
+  border-radius: 50%;
+  background-color: #5aff28;
+}
+
+.failed {
+  color: #FF2834;
+  position: relative;
+  margin-left: 12px;
+}
+
+.failed:before {
+  position: absolute;
+  margin-left: -11px;
+  margin-top: 5px;
+  content: '';
+  width: 8px;
+  height: 8px;
+  display: block;
+  border-radius: 50%;
+  background-color: #FF2834;
+}
