@@ -1,0 +1,91 @@
+body {
+  font-size: 10px;
+  background-color: #333;
+  margin: 0;
+  padding: 2.4em;
+  color: #fff;
+}
+
+h1 {
+  font-size: 1.2em;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  margin: 0 0 1.2em 0;
+}
+
+p {
+  color: #fff;
+}
+
+.fm input[type="text"] {
+  margin: 0 0 8px 0;
+  border: none;
+  background-color: #ccc;
+}
+
+.fm input[type="text"]:focus {
+  background-color: #fff;
+}
+
+.fm label {
+  width: 70px;
+  display: inline-block;
+}
+
+.success {
+  color: #5aff28;
+  position: relative;
+  margin-left: 12px;
+}
+
+.success:before {
+  position: absolute;
+  margin-left: -11px;
+  margin-top: 3px;
+  content: '';
+  width: 8px;
+  height: 8px;
+  display: block;
+  border-radius: 50%;
+  background-color: #5aff28;
+}
+
+.failed {
+  color: #FF2834;
+  position: relative;
+  margin-left: 12px;
+}
+
+.failed:before {
+  position: absolute;
+  margin-left: -11px;
+  margin-top: 3px;
+  content: '';
+  width: 8px;
+  height: 8px;
+  display: block;
+  border-radius: 50%;
+  background-color: #FF2834;
+}
+
+.btn {
+  width: 80px;
+  height: 26px;
+  display: block;
+  border: solid 1px #999;
+  color: #fff;
+  text-align: center;
+  line-height: 26px;
+  border-radius: 4px;
+}
+.btn:hover {
+  transition: .2s ease-in-out;
+  background-color: #666;
+}
+
+a,
+a:hover,
+a:focus {
+  text-decoration: none;
+  color: #fff;
+}
