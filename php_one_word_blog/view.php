@@ -7,7 +7,7 @@ if (!$con) {
   exit('<p class="failed">データベースに接続できませんでした</p>');
 }
 
-$result = mysqli_select_db($con, 'db_nenpyo');
+$result = mysqli_select_db($con, 'one_word_blog');
 if (!$result) {
   exit('<p class="failed">データベースを選択できませんでした。</p>');
 }
@@ -17,10 +17,10 @@ if (!$result) {
   exit('<p class="failed">文字コードを指定できませんでした。</p>');
 }
 
-$year  = $_REQUEST['year'];
-$event = $_REQUEST['event'];
+$date = $_REQUEST['date'];
+$content = $_REQUEST['content'];
 
-$result = mysqli_query($con, "INSERT INTO nenpyo (year, event) VALUES('$year', '$event')");
+$result = mysqli_query($con, "INSERT INTO one_word_blog_content (date, content) VALUES('$date', '$content')");
 if (!$result) {
   exit('<p class="failed">データを登録できませんでした。</p>');
 }

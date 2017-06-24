@@ -4,9 +4,9 @@
 <!-- データベース作成 -->
 <?php
 
-// $dbName = 'one-word-blog';
+// $dbName = 'one_word_blog';
 // $sql = "CREATE DATABASE {$dbName};";
-// $link = @mysqli_connect("localhost",root,root);
+// $link = mysqli_connect("localhost",root,root);
 // mysqli_set_charset($link, 'utf8');
 // mysqli_query($link, $sql);
 // mysqli_close($link);
@@ -16,8 +16,8 @@
 <!-- テーブルの作成 -->
 <?php
 
-// $dbName = 'one-word-blog';
-// $tblName = 'one-word-blog-content';
+// $dbName = 'one_word_blog';
+// $tblName = 'one_word_blog_content';
 //
 // $sql = "CREATE TABLE {$tblName} (";
 // $sql .= 'id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,';

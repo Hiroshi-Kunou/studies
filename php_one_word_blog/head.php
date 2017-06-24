@@ -8,5 +8,3 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,600" rel="stylesheet">
 
   <body>
-
-    <h1>php study</h1>
