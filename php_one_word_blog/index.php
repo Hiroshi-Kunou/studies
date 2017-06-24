@@ -11,18 +11,26 @@ mysqli_select_db($link, $dbName);
 mysqli_set_charset($link, 'utf8');
 $result = mysqli_query($link, $sql);
 
-echo '<table>';
+echo '<div>';
 while($row = mysqli_fetch_assoc($result)){
-  echo "<tr><td> {$row['date']} </td>";
-  echo "<td> {$row['content']} </td></tr>";
+  echo '<hr>';
+  echo '<div class="article__wrapper">';
+  echo '<div class="article__title">';
+  echo "{$row['date']}";
+  echo '</div>';
+  echo '<div class="article__content">';
+  echo "{$row['title']}";
+  echo '</div>';
+  echo '<div class="article__content">';
+  echo "{$row['content']}";
+  echo '</div>';
+  echo '</div>';
 }
-echo '</table>';
+echo '</div>';
 
 mysqli_free_result($result);
 mysqli_close($link);
 
 ?>
-
-<a href="form.php" class="btn __back">投稿</a><br>
 
 <?php include('foot.php');?>

@@ -2,6 +2,11 @@
 
 <?php
 
+date_default_timezone_set('Asia/Tokyo');
+$date = date('Y.m.d H:i');
+$title = $_REQUEST['title'];
+$content = $_REQUEST['content'];
+
 $con = mysqli_connect('localhost', 'root', 'root');
 if (!$con) {
   exit('<p class="failed">データベースに接続できませんでした</p>');
@@ -17,10 +22,7 @@ if (!$result) {
   exit('<p class="failed">文字コードを指定できませんでした。</p>');
 }
 
-$date = $_REQUEST['date'];
-$content = $_REQUEST['content'];
-
-$result = mysqli_query($con, "INSERT INTO one_word_blog_content (date, content) VALUES('$date', '$content')");
+$result = mysqli_query($con, "INSERT INTO one_word_blog_content (date, title, content) VALUES('$date', '$title', '$content')");
 if (!$result) {
   exit('<p class="failed">データを登録できませんでした。</p>');
 }

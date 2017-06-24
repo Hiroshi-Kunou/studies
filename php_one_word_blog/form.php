@@ -1,15 +1,12 @@
 <?php include('head.php');?>
 
-<?php
-date_default_timezone_set('Asia/Tokyo');
-echo date('Y.m.d H:i');
-?>
-
 <form action="view.php" class="fm" method="post">
   <label>Title</label>
-  <input type="text" name="date">
+  <br>
+  <input type="text" name="title">
   <br>
   <label>Event</label>
+  <br>
   <input type="text" name="content" class="input__content">
   <br>
   <input type="submit" value="submit" class="btn">
