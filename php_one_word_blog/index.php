@@ -1,10 +1,5 @@
 <?php include('head.php');?>
 
-<div class="iphone7">
-  <div class="iphone7__screen">
-    <a href="index.php">
-        <h1>One Word Blog</h1>
-    </a>
 <?php
 
 $dbName = 'one_word_blog';
@@ -27,14 +22,7 @@ mysqli_free_result($result);
 mysqli_close($link);
 
 ?>
+
 <a href="form.php" class="btn __back">投稿</a><br>
-
-
-</div>
-
-<div class="iphone7__button">
-</div>
-</div>
-
 
 <?php include('foot.php');?>
