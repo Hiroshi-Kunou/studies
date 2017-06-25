@@ -22,7 +22,6 @@ if(isset($_POST['submit'])){
 }
 
  ?>
-
 <form action="view.php" class="fm" method="post">
   <label>Title</label>
   <br>
