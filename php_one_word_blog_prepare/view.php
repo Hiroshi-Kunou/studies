@@ -1,6 +1,6 @@
-<?php include('head.php');?>
-
 <?php
+
+include('head.php');
 
 date_default_timezone_set('Asia/Tokyo');
 $date = date('Y.m.d H:i');
@@ -33,6 +33,7 @@ if (!$con) {
 }
 
 ?>
+
 <p class="success">登録が完了しました。</p>
 <a href="index.php" class="btn __back">戻る</a>
 
