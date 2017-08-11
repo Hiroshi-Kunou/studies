@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>graph study</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.10.0/d3.js"></script>
+  <meta charset="utf-8"/>
+</head>
+<body>
+
+<h1>年齢各歳別人口（平成27年）</h1>
+<div class="legend"><span class="tip man"></span>男</div>
+<div class="legend"><span class="tip woman"></span>女</div>
+<div id="graph"></div>
+<div class="caption">（出所）総務省統計局</div>
+
+<!--
+==============================
+style sheet
+==============================
+ -->
+
+<style>
+
+/*for graph*/
+
+svg {
+  width: 650px;
+  height: 2200px;
+}
+.label {
+  font-size: 10px;
+  transform: translateY(11px);
+}
+.label:nth-child(2n) {
+  display: none;
+}
+.label-tick {
+  font-size: 10px;
+}
+.axis path {
+  display: none;
+}
+
+/*other*/
+
+h1 {
+  font-size: 18px;
+}
+.legend {
+  font-size: 10px;
+}
+.tip {
+  display: inline-block;
+  width: 15px;
+  height: 6px;
+  margin-right: 5px;
+}
+.man {
+  background-color: skyblue;
+}
+.woman {
+  background-color: pink;
+}
+.caption {
+  font-size: 10px;
+  color: #666;
+}
+
+
+</style>
+
+<!--
+==============================
+javascript
+==============================
+-->
+
+<script>
+
+var margin = 50;
+
+d3.csv('data.csv', function(error,data){
+
+  d3.select('#graph').append('svg');
+
+  d3.select('svg').append('g')
+    .selectAll('rect')
+    .data(data)
+    .enter()
+    .append('rect')
+    .attr('width', function(d,i){return d['男'] / 2})
+    .attr('height','6px')
+    .attr('y', function(d,i){return i*20 + margin})
+    .attr('x', '50px')
+    .attr('fill','skyblue')
+    ;
+
+  d3.select('svg').append('g')
+    .selectAll('rect')
+    .data(data)
+    .enter()
+    .append('rect')
+    .attr('width', function(d,i){return d['女'] / 2})
+    .attr('height','6px')
+    .attr('y', function(d,i){return i*20 + margin+6})
+    .attr('x', '50px')
+    .attr('fill','pink')
+    ;
+
+  d3.select('svg').append('g')
+    .selectAll('text')
+    .data(data)
+    .enter()
+    .append('text')
+    .text(function(d,i){return d['年齢']})
+    .attr('y', function(d,i){return i*20 + margin})
+    .attr('x', '46px')
+    .attr('text-anchor','end')
+    .classed('label',true)
+    ;
+
+  var yscale = d3.scaleLinear()
+    .domain([0,1200])
+    .range([0,600])
+  ;
+
+  d3.select('svg').append('g')
+    .classed('axis',true)
+    .attr('transform','translate(50,40)')
+    .call(d3.axisTop(yscale))
+  ;
+
+  d3.select('svg').append('text')
+    .text('千人')
+    .attr('transform','translate(58,31)')
+    .classed('label-tick',true)
+    ;
+
+});
+
+</script>
+
+</body>
+</html>

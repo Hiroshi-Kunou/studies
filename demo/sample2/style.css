@@ -1,0 +1,56 @@
+div {
+  box-sizing: border-box;
+}
+.l1,
+.l2,
+.l3 {
+  border: 1px solid #000;
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+}
+
+.l1person,
+.l2person,
+.l3person {
+  float: left;
+  margin: 10px 10px 10px 10px;
+}
+
+.g1,
+.g2 {
+  display: inline-block;
+  width: 100%;
+  border: 1px solid #000;
+  margin-top: 10px;
+}
+.g1person,
+.g2person,
+.g3person {
+  margin: 10px 10px 10px 10px;
+}
+
+.photo {
+  width: 80px;
+  height: 80px;
+  background-color: gray;
+}
+
+.person {
+}
+
+.btn {
+  width:200px;
+  height: 50px;
+  border: 1px solid #000;
+  float: left;
+}
+
+.clear {
+  clear: both;
+}
+
+p {
+  margin: 5px 0;
+  font-size: 12px;
+}
