@@ -2,6 +2,10 @@
 // 階級でソート
 
 var levelSort = function(){d3.csv('data.csv', function(error,data){
+  d3.select('.sorttitle1').text(a1title);
+  d3.select('.sorttitle2').text(a2title);
+  d3.select('.info-text').text(ainfo);
+
   // 初期化するため.contentを削除して追加
   d3.select('.content').remove();
   d3.select('body')
