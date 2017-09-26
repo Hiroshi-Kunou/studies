@@ -16,7 +16,7 @@ var levelSort = function(){
     if(data[i]['階級']=='b'){
       level2.push(data[i]);
     }
-    if(data[i]['階級']=='b'){
+    if(data[i]['階級']=='c'){
       level3.push(data[i]);
     }
   };
@@ -106,6 +106,16 @@ var levelSort = function(){
   l3p.append('p')
     .classed('group',true)
     .text(function(d,i){return d['派閥']})
+  ;
+
+  d3.select('.l2')
+    .append('div')
+    .classed('clear',true)
+  ;
+
+  d3.select('.l3')
+    .append('div')
+    .classed('clear',true)
   ;
 
 });

@@ -126,5 +126,28 @@ d3.csv('data_china.csv', function(error,data){
     .classed('group',true)
   ;
 
+
+
+  d3.select('.g1')
+    .append('div')
+    .classed('clear',true)
+  ;
+
+  d3.select('.g2')
+    .append('div')
+    .classed('clear',true)
+  ;
+
+  d3.select('.g3')
+    .append('div')
+    .classed('clear',true)
+  ;
+
+  d3.select('.g4')
+    .append('div')
+    .classed('clear',true)
+  ;
+
+
 });
 };
