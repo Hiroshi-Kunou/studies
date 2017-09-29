@@ -1,8 +1,9 @@
 var res = {
-background_png: "res/background.png",
-ship_png: "res/ship.png",
-particle_png: "res/particle.png",
-asteroid_png: "res/asteroid.png",
+  background_png: "res/bomb.png",
+  ship_png: "res/cart.png",
+  particle_png: "res/strawberry.png",
+  asteroid_png: "res/leftbutton.png",
+  asteroid_png: "res/rightbutton.png",
 };
 var g_resources = [];
 for (var i in res) {
